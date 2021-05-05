@@ -54,6 +54,8 @@ $route['welcome'] = 'welcome';
 
 $route['administrasi'] = "admintask";
 $route['administrasi/add'] = "admintask/add";
+$route['administrasi/edit/(:num)'] = "admintask/edit/$1";
+$route['administrasi/delete/(:num)'] = "admintask/delete/$1";
 
 $route['telemarketing'] = "rotask";
 
