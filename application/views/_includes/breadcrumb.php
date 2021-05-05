@@ -1,4 +1,4 @@
-<h1 class="mt-4"><?php echo ucfirst(str_replace("-", " ", $this->uri->segments[1])); ?></h1>
+<h1 class="mt-4"><?php echo (count($this->uri->segments) > 0) ? ucfirst(str_replace("-", " ", $this->uri->segments[1])) : "Dashboard"; ?></h1>
 <ol class="breadcrumb mb-4">
     <?php foreach ($this->uri->segments as $segment): ?>
         <?php 

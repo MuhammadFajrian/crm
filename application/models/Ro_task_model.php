@@ -31,7 +31,18 @@ class Ro_task_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->_table)->result();
+        $sql = "SELECT `a`.`admin_task_id`, `a`.`start_date`, `a`.`end_date`, CONCAT(DATE_FORMAT(`a`.`start_date`, '%d %b'), ' - ', DATE_FORMAT(`a`.`end_date`, '%d %b %Y')) AS `deadline`, `u`.`fullname`, `a`.`data_source`, `c`.`name`
+        FROM `admin_task` AS `a`
+        INNER JOIN `company` AS `c` ON `a`.`company_id` = `c`.`company_id`
+        INNER JOIN `user` AS `u` ON `a`.`user_id` = `u`.`user_id`";
+        $query = $this->db->query($sql);
+
+        return $query->result();
+    }
+
+    public function getAllAsigned($user_id)
+    {
+        # code...
     }
     
     public function getById($id)
