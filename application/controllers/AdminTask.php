@@ -39,7 +39,7 @@ class AdminTask extends CI_Controller
 
     public function edit($id = null)
     {
-        if (!isset($id)) redirect('admin_task');
+        if (!isset($id)) redirect('administrasi');
        
         $admin_task = $this->admin_task_model;
         $validation = $this->form_validation;
@@ -48,9 +48,11 @@ class AdminTask extends CI_Controller
         if ($validation->run()) {
             $admin_task->update();
             $this->session->set_flashdata('success', 'Berhasil diperbarui');
-            redirect(site_url('admin_task'));
+            redirect(site_url('administrasi'));
         }
 
+        $data["users"] = $this->user_model->getUserRoleTelemarketing();
+        $data["companies"] = $this->company_model->getAll();
         $data["admin_task"] = $admin_task->getById($id);
         if (!$data["admin_task"]) show_404();
         
@@ -62,7 +64,8 @@ class AdminTask extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->admin_task_model->delete($id)) {
-            redirect(site_url('admin_task'));
+            $this->session->set_flashdata('success', 'Berhasil dihapus');
+            redirect(site_url('administrasi'));
         }
     }
 }
