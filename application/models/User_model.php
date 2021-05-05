@@ -73,4 +73,9 @@ class User_model extends CI_Model
         $this->db->query($sql);
     }
 
+    public function getUserRoleTelemarketing()
+    {
+        return $this->db->get_where($this->_table, ["role" => 'telemarketing'])->result();
+    }
+
 }

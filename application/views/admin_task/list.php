@@ -27,7 +27,7 @@
                             </div>
                             <?php endif; ?>
                             <div class="card-header">
-                                <a href="<?php echo site_url('admin_task/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+                                <a href="<?php echo site_url('administrasi/add') ?>"><i class="fas fa-plus"></i> Add New</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -36,8 +36,8 @@
                                             <tr>
                                                 <th>Deadline</th>
                                                 <th>Nama RO</th>
-                                                <th>Sumber</th>
                                                 <th>Nama BU</th>
+                                                <th>Sumber</th>
                                                 <th>Status</th>
                                                 <th></th>
                                             </tr>
@@ -45,25 +45,25 @@
                                         <tbody>
                                             <?php foreach ($admin_tasks as $admin_task): ?>
                                             <tr>
+                                                <td width="15%">
+                                                    <?php echo $admin_task->deadline ?> 
+                                                </td>
+                                                <td width="20%">
+                                                    <?php echo $admin_task->fullname ?>
+                                                </td>
                                                 <td width="20%">
                                                     <?php echo $admin_task->name ?>
                                                 </td>
-                                                <td width="20%">
-                                                    <?php echo $admin_task->address ?>
-                                                </td>
-                                                <td width="20%">
-                                                    <?php echo $admin_task->pic_name ?>
+                                                <td width="5%">
+                                                    <?php echo $admin_task->data_source ?>
                                                 </td>
                                                 <td width="10%">
-                                                    <?php echo $admin_task->contact ?>
-                                                </td>
-                                                <td width="10%">
-                                                    <?php echo $admin_task->email ?>
+                                                    NEW CALL
                                                 </td>
                                                 <td width="10%" style="text-align: center;">
-                                                    <a href="<?php echo site_url('admin_task/edit/'.$admin_task->admin_task_id) ?>"
+                                                    <a href="<?php echo site_url('administrasi/edit/'.$admin_task->admin_task_id) ?>"
                                                     class="btn btn-small" style="padding-right: 5px;padding-left: 5px;"><i class="fas fa-edit"></i></a>
-                                                    <a onclick="deleteConfirm('<?php echo site_url('admin_task/delete/'.$admin_task->admin_task_id) ?>')"
+                                                    <a onclick="deleteConfirm('<?php echo site_url('administrasi/delete/'.$admin_task->admin_task_id) ?>')"
                                                     href="#!" class="btn btn-small text-danger" style="padding-right: 5px;padding-left: 5px;"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
