@@ -27,7 +27,7 @@
                             </div>
                             <?php endif; ?>
                             <div class="card-header">
-                                <a href="<?php echo site_url('admin_task/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+                                <a href="<?php echo site_url('administrasi/add') ?>"><i class="fas fa-plus"></i> Add New</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -46,19 +46,19 @@
                                             <?php foreach ($admin_tasks as $admin_task): ?>
                                             <tr>
                                                 <td width="20%">
-                                                    <?php echo $admin_task->name ?>
+                                                    <?php echo $admin_task->start_date." - ".$admin_task->end_date ?> 
                                                 </td>
                                                 <td width="20%">
-                                                    <?php echo $admin_task->address ?>
+                                                    <?php echo $admin_task->start_date ?>
                                                 </td>
                                                 <td width="20%">
-                                                    <?php echo $admin_task->pic_name ?>
+                                                    <?php echo $admin_task->start_date ?>
                                                 </td>
                                                 <td width="10%">
-                                                    <?php echo $admin_task->contact ?>
+                                                    <?php echo $admin_task->start_date ?>
                                                 </td>
                                                 <td width="10%">
-                                                    <?php echo $admin_task->email ?>
+                                                    <?php echo $admin_task->start_date ?>
                                                 </td>
                                                 <td width="10%" style="text-align: center;">
                                                     <a href="<?php echo site_url('admin_task/edit/'.$admin_task->admin_task_id) ?>"

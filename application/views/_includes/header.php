@@ -5,5 +5,7 @@
 <meta name="author" content="" />
 <title><?php echo SITE_NAME .": ". ucfirst($this->uri->segment(1)) ." - ". ucfirst($this->uri->segment(2)) ?></title>
 <link href="<?= base_url('assets/css/styles.css')?>" rel="stylesheet" />
+<link href="<?= base_url('assets/css/jquery-ui.css')?>" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>

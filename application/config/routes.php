@@ -51,7 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'dashboard';
 $route['welcome'] = 'welcome';
+
 $route['administrasi'] = "admintask";
+$route['administrasi/add'] = "admintask/add";
+
 $route['telemarketing'] = "rotask";
 
 $route['404_override'] = '';

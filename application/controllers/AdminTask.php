@@ -9,6 +9,8 @@ class AdminTask extends CI_Controller
         parent::__construct();
         $this->load->library('session');
         $this->load->model("admin_task_model");
+        $this->load->model("user_model");
+        $this->load->model("company_model");
         $this->load->library('form_validation');
     }
 
@@ -27,10 +29,12 @@ class AdminTask extends CI_Controller
         if ($validation->run()) {
             $admin_task->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect(site_url('admin_task'));
+            redirect(site_url('administrasi'));
         }
 
-        $this->load->view("admin_task/new_form");
+        $data["users"] = $this->user_model->getUserRoleTelemarketing();
+        $data["companies"] = $this->company_model->getAll();
+        $this->load->view("admin_task/new_form", $data);
     }
 
     public function edit($id = null)
