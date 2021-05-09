@@ -58,15 +58,15 @@ class Ro_task_model extends CI_Model
 
     public function getAllAsigned($user_id)
     {
-        $sql = "SELECT `a`.`admin_task_id`, CONCAT(DATE_FORMAT(`a`.`start_date`, '%d %b'), ' - ', DATE_FORMAT(`a`.`end_date`, '%d %b %Y')) AS `deadline`, `u`.`fullname`, `a`.`data_source`, `c`.`name`, `ro`.`call_date`, `ro`.`call_response`, `ro`.`result`
+        $sql = "SELECT `a`.`admin_task_id`, CONCAT(DATE_FORMAT(`a`.`start_date`, '%d %b'), ' - ', DATE_FORMAT(`a`.`end_date`, '%d %b %Y')) AS `deadline`, `u`.`fullname`, `a`.`data_source`, `c`.`name`, DATE_FORMAT(MAX(`ro`.`call_date`), '%d-%m-%Y') AS `last_call`, `ro`.`call_response`, `ro`.`result`, IF(`call_response` = '4', DATE_FORMAT(DATE_ADD(MAX(`ro`.`call_date`), INTERVAL 3 DAY), '%d-%m-%Y'), '-') AS `next_call`, `res_parm`.`description` AS `call_response`, `result_parm`.`description` AS `result`
         FROM `admin_task` AS `a`
         INNER JOIN `company` AS `c` ON `a`.`company_id` = `c`.`company_id`
         INNER JOIN `user` AS `u` ON `a`.`user_id` = `u`.`user_id`
-        LEFT JOIN (
-            SELECT * FROM `ro_task` 
-            WHERE `ro_task_id` IN (SELECT MAX(ro_task_id) FROM `ro_task` GROUP BY `admin_task_id`)
-        ) AS `ro` ON `ro`.admin_task_id = `a`.`admin_task_id`
-        WHERE `a`.`user_id` = $user_id";
+        LEFT JOIN `ro_task` AS `ro` ON `ro`.admin_task_id = `a`.`admin_task_id`
+        LEFT JOIN `parameter` AS `res_parm` ON `ro`.`call_response` = `res_parm`.`value` AND `res_parm`.`name` = 'CALL_RESPONSE'
+        LEFT JOIN `parameter` AS `result_parm` ON `ro`.`call_response` = `result_parm`.`value` AND `result_parm`.`name` = 'RESULT'
+        WHERE `a`.`user_id` = $user_id
+        GROUP BY `a`.`admin_task_id`";
         $query = $this->db->query($sql);
 
         return $query->result();
