@@ -2,6 +2,8 @@
 <script src="<?php echo base_url('assets/jquery/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/jquery-easing/jquery.easing.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/jquery/jquery-ui.js'); ?>"></script>
+<script src="<?php echo base_url('assets/jquery/jquery.number.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/jquery/jquery.maskedinput.js'); ?>"></script>
 
 <!-- Bootrstrap -->
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>

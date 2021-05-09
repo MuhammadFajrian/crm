@@ -58,6 +58,7 @@ $route['administrasi/edit/(:num)'] = "admintask/edit/$1";
 $route['administrasi/delete/(:num)'] = "admintask/delete/$1";
 
 $route['telemarketing'] = "rotask";
+$route['telemarketing/edit/(:num)'] = "rotask/edit/$1";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

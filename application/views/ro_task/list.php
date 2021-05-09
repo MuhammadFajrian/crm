@@ -34,38 +34,34 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Deadline</th>
-                                                <th>Tgl. Telpon</th>
+                                                <th>Deadline</th> 
+                                                <th>Badan Usaha</th> 
+                                                <th>Last Call</th>
+                                                <th>Next Call</th>
                                                 <th>Respon</th>
-                                                <th>Skala Akurasi</th>
-                                                <th>Hasil Telpon</th>
-                                                <th>Status</th>
-                                                <th></th>
+                                                <th>Hasil</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($ro_tasks as $ro_task): ?>
                                             <tr>
-                                                <td width="20%">
-                                                    <?php echo $ro_task->name ?>
+                                                <td width="15%">
+                                                    <?php echo $ro_task->deadline ?>
                                                 </td>
                                                 <td width="20%">
-                                                    <?php echo $ro_task->address ?>
+                                                    <a href="<?php echo site_url("telemarketing/edit/".$ro_task->admin_task_id) ?>"><?php echo $ro_task->name ?></a>
+                                                </td>
+                                                <td width="12%">
+                                                    <?php echo ($ro_task->last_call == "") ? " - " : $ro_task->last_call ?>
+                                                </td>
+                                                <td width="12%">
+                                                    <?php echo $ro_task->next_call ?>
                                                 </td>
                                                 <td width="20%">
-                                                    <?php echo $ro_task->pic_name ?>
+                                                    <?php echo $ro_task->call_response ?>
                                                 </td>
-                                                <td width="10%">
-                                                    <?php echo $ro_task->contact ?>
-                                                </td>
-                                                <td width="10%">
-                                                    <?php echo $ro_task->email ?>
-                                                </td>
-                                                <td width="10%" style="text-align: center;">
-                                                    <a href="<?php echo site_url('ro_task/edit/'.$ro_task->ro_task_id) ?>"
-                                                    class="btn btn-small" style="padding-right: 5px;padding-left: 5px;"><i class="fas fa-edit"></i></a>
-                                                    <a onclick="deleteConfirm('<?php echo site_url('ro_task/delete/'.$ro_task->ro_task_id) ?>')"
-                                                    href="#!" class="btn btn-small text-danger" style="padding-right: 5px;padding-left: 5px;"><i class="fas fa-trash"></i></a>
+                                                <td width="20%">
+                                                    <?php echo $ro_task->result ?>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>

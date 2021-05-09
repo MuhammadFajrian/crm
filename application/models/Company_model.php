@@ -36,7 +36,7 @@ class Company_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->_table)->result();
+        return $this->db->order_by('name', 'ASC')->get($this->_table)->result();
     }
     
     public function getById($id)
@@ -65,6 +65,21 @@ class Company_model extends CI_Model
         $this->pic_name = $post["pic_name"];
         $this->email = $post["email"];
         return $this->db->update($this->_table, $this, array('company_id' => $post['id']));
+    }
+
+    public function updateEmployee($company_id)
+    {
+        $username = $this->session->user_logged->username;
+        $timestamp = date("Y-m-d h:i:s");
+
+        $post = $this->input->post();
+        $this->db->set('employee', $post["employee"]);
+        $this->db->set('employee_family', $post["employee_family"]);
+        $this->db->set('updated_by', $username);
+        $this->db->set('updated_at', $timestamp);
+        $this->db->where('company_id', $company_id);
+
+        return $this->db->update($this->_table);
     }
 
     public function delete($id)
