@@ -13,6 +13,14 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4"><b>Aplikasi CRM KC Depok</b></h3></div>
                                     <div class="card-body">
+                                        <?php if ($this->session->flashdata('login_failed')): ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <?php echo $this->session->flashdata('login_failed'); ?>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <?php endif; ?>
                                         <form action="<?= site_url('user/login') ?>" method="POST">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>

@@ -25,20 +25,19 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <form action="" method="post">
-
                                 <div class="form-group">
                                     <label for="name">NPP *</label>
                                     <input class="form-control <?php echo form_error('npp') ? 'is-invalid':'' ?>"
-                                    type="text" name="npp" placeholder="NPP" value="<?php echo $user->npp ?>" />
+                                    type="text" name="npp" value="" />
                                     <div class="invalid-feedback">
-                                        <?php echo form_error('fullname') ?>
+                                        <?php echo form_error('name') ?>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="name">Email *</label>
                                     <input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>"
-                                    type="text" name="email" placeholder="Your Email" value="<?php echo $user->email ?>" readonly />
+                                    type="text" name="email" value="" />
                                     <div class="invalid-feedback">
                                         <?php echo form_error('name') ?>
                                     </div>
@@ -47,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="name">Username *</label>
                                     <input class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>"
-                                    type="text" name="username" placeholder="Your Name" value="<?php echo $user->username ?>" readonly/>
+                                    type="text" name="username" value=""/>
                                     <div class="invalid-feedback">
                                         <?php echo form_error('username') ?>
                                     </div>
@@ -56,7 +55,7 @@
                                 <div class="form-group">
                                     <label for="name">Full Name *</label>
                                     <input class="form-control <?php echo form_error('fullname') ? 'is-invalid':'' ?>"
-                                    type="text" name="fullname" placeholder="Your Full Name" value="<?php echo $user->fullname ?>" />
+                                    type="text" name="fullname" value="" />
                                     <div class="invalid-feedback">
                                         <?php echo form_error('fullname') ?>
                                     </div>
@@ -65,22 +64,14 @@
                                 <div class="form-group">
                                     <label for="price">Address *</label>
                                     <textarea class="form-control <?php echo form_error('address') ? 'is-invalid':'' ?>"
-                                    name="address" placeholder="Your Address"><?php echo $user->address ?></textarea>
+                                    name="address" ></textarea>
                                     <div class="invalid-feedback">
                                         <?php echo form_error('address') ?>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="is_active" id="is_active" value="1" <?php echo $user->is_active == 1 ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="is_active">
-                                        Active Status
-                                    </label>
-                                    </div>
-                                </div>
-
-                                <input class="btn btn-success" type="submit" name="btn" value="Update" />
+                                <input class="form-control" type="hidden" name="role" value="<?php echo $role ?>" />
+                                <input class="btn btn-success" type="submit" name="btn" value="Save" />
                             </form>
                             </div>
                         </div>

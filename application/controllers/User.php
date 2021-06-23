@@ -27,9 +27,13 @@ class User extends CI_Controller
         redirect(site_url('user/login'));
     }
 
-    public function profile()
+    public function profile($id = null)
     {
-        $user_id = $this->session->user_logged->user_id;
+        if (!isset($id)) {
+            $user_id = $this->session->user_logged->user_id;
+        }else{
+            $user_id = $id;
+        }
         
         $user = $this->user_model;
         $validation = $this->form_validation;

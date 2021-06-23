@@ -1,4 +1,4 @@
-<h1 class="mt-4"><?php echo (count($this->uri->segments) > 0) ? ucfirst(str_replace("-", " ", $this->uri->segments[1])) : "Dashboard"; ?></h1>
+<h1 class="mt-4"><?php echo (count($this->uri->segments) > 0) ? ucwords(str_replace("-", " ", $this->uri->segments[1])) : "Dashboard"; ?></h1>
 <ol class="breadcrumb mb-4">
     <?php foreach ($this->uri->segments as $segment): ?>
         <?php 
@@ -8,9 +8,9 @@
 
         <li class="breadcrumb-item <?php echo $is_active ? 'active': '' ?>">
             <?php if($is_active): ?>
-                <?php echo ucfirst(str_replace("-", " ",$segment)) ?>
+                <?php echo ucwords(str_replace("-", " ",$segment)) ?>
             <?php else: ?>
-                <a href="<?php echo site_url($url) ?>"><?php echo ucfirst(str_replace("-", " ",$segment)) ?></a>
+                <a href="<?php echo site_url($url) ?>"><?php echo ucwords(str_replace("-", " ",$segment)) ?></a>
             <?php endif; ?>
         </li>
     <?php endforeach; ?>

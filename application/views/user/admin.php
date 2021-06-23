@@ -26,39 +26,43 @@
                                 </button>
                             </div>
                             <?php endif; ?>
+                            <div class="card-header">
+                                <a href="<?php echo $for_role == "admin" ? site_url('admin/add') : site_url('relation-officer/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+                            </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Deadline</th> 
-                                                <th>Badan Usaha</th> 
-                                                <th>Last Call</th>
-                                                <th>Next Call</th>
-                                                <th>Respon</th>
-                                                <th>Hasil</th>
+                                                <th>NPP</th> 
+                                                <th>Email</th> 
+                                                <th>Username</th>
+                                                <th>Nama Lengkap</th>
+                                                <th>Alamat</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($ro_tasks as $ro_task): ?>
+                                            <?php foreach ($admins as $admin): ?>
                                             <tr>
                                                 <td width="15%">
-                                                    <?php echo $ro_task->deadline ?>
+                                                    <?php echo $admin->npp ?>
                                                 </td>
                                                 <td width="20%">
-                                                    <a href="<?php echo site_url("telemarketing/edit/".$ro_task->admin_task_id) ?>"><?php echo $ro_task->name ?></a>
+                                                    <?php echo $admin->email ?>
                                                 </td>
                                                 <td width="12%">
-                                                    <?php echo ($ro_task->last_call == "") ? " - " : $ro_task->last_call ?>
-                                                </td>
-                                                <td width="12%">
-                                                    <?php echo $ro_task->next_call ?>
+                                                    <?php echo $admin->username ?>
                                                 </td>
                                                 <td width="20%">
-                                                    <?php echo $ro_task->call_response ?>
+                                                    <?php echo $admin->fullname ?>
                                                 </td>
                                                 <td width="20%">
-                                                    <?php echo $ro_task->result ?>
+                                                    <?php echo $admin->address ?>
+                                                </td>
+                                                <td width="10%" style="text-align: center;">
+                                                    <a href="<?php echo site_url('user/profile/'.$admin->user_id) ?>"
+                                                    class="btn btn-small" style="padding-right: 5px;padding-left: 5px;"><i class="fas fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>

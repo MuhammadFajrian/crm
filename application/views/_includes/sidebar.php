@@ -13,8 +13,8 @@
             </a>
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="<?= site_url('user'); ?>">Admin</a>
-                    <a class="nav-link" href="#">Relation Officer (RO)</a>
+                    <a class="nav-link" href="<?= site_url('admin'); ?>">Admin</a>
+                    <a class="nav-link" href="<?= site_url('relation-officer'); ?>">Relation Officer (RO)</a>
                 </nav>
             </div>
         <?php } ?>
