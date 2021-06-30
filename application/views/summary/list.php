@@ -27,9 +27,9 @@
                             </div>
                             <?php endif; ?>
                             <div class="card-header">
-                                <button type="button" class="btn-sm btn-success">
+                                <a href="<?php echo site_url('summary/export'); ?>" type="button" class="btn-sm btn-success">
                                     <span aria-hidden="true">Export Excel</span>
-                                </button>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -37,43 +37,56 @@
                                         <thead>
                                             <tr>
                                                 <th>Nama RO</th>
-                                                <th>Nama Badan Usaha</th>
+                                                <th>Nama_Badan_Usaha</th>
                                                 <th>Alamat</th>
                                                 <th>Sumber</th>
-                                                <th>Tenaga Kerja</th>
+                                                <th>Tenaga_Kerja</th>
                                                 <th>Keluarga</th>
-                                                <th>Last Call</th>
-                                                <th>Respon Telepon</th>
-                                                <th>Skala Akurasi</th>
-                                                <th>Hasil Telepon</th>
-                                                <th>Total Telepon</th>
+                                                <th>Stratifikasi</th>
+                                                <th>Last_Call</th>
+                                                <th>Respon_Telepon</th>
+                                                <th>Hasil_Telepon</th>
+                                                <th>Total_Telepon</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php foreach ($summaries as $summary): ?>
                                             <tr>
                                                 <td width="15%">
+                                                    <?php echo $summary->fullname ?>
                                                 </td>
                                                 <td width="20%">
+                                                    <?php echo $summary->company_name ?>
                                                 </td>
                                                 <td width="20%">
+                                                    <?php echo $summary->address ?>
                                                 </td>
                                                 <td width="5%">
+                                                    <?php echo $summary->data_source ?>
                                                 </td>
                                                 <td width="10%">
+                                                    <?php echo $summary->employee ?>
                                                 </td>
                                                 <td width="10%">
+                                                    <?php echo $summary->employee_family ?>
                                                 </td>
                                                 <td width="10%">
+                                                    <?php echo $summary->stratifikasi ?>
                                                 </td>
                                                 <td width="10%">
+                                                    <?php echo $summary->last_call ?>
                                                 </td>
                                                 <td width="10%">
+                                                    <?php echo $summary->call_response_desc ?>
                                                 </td>
                                                 <td width="10%">
+                                                    <?php echo $summary->result_desc ?>
                                                 </td>
                                                 <td width="10%">
+                                                    <?php echo $summary->total ?>
                                                 </td>
                                             </tr>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>

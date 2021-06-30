@@ -2,70 +2,73 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Summary extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
         $this->load->library('session');
-        $this->load->model("admin_task_model");
-        $this->load->model("user_model");
-        $this->load->model("company_model");
-        $this->load->library('form_validation');
+        $this->load->model("summary_model");
     }
 
     public function index()
     {
-        $data["admin_tasks"] = $this->admin_task_model->getAll();
+        $data["summaries"] = $this->summary_model->getAll();
         $this->load->view("summary/list", $data);
     }
 
-    public function add()
+    public function export()
     {
-        $admin_task = $this->admin_task_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($admin_task->rules());
+        $summaries = $this->summary_model->getAll();
 
-        if ($validation->run()) {
-            $admin_task->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect(site_url('administrasi'));
+        $spreadsheet = new Spreadsheet;
+
+        $spreadsheet->setActiveSheetIndex(0)
+                    ->setCellValue('A1', 'No')
+                    ->setCellValue('B1', 'Nama RO')
+                    ->setCellValue('C1', 'Nama Badan Usaha')
+                    ->setCellValue('D1', 'Alamat')
+                    ->setCellValue('E1', 'Sumber')
+                    ->setCellValue('F1', 'Tenaga Kerja')
+                    ->setCellValue('G1', 'Keluarga')
+                    ->setCellValue('H1', 'Stratfikasi')
+                    ->setCellValue('I1', 'Last Call')
+                    ->setCellValue('J1', 'Respon Telepon')
+                    ->setCellValue('K1', 'Hasil Telepon')
+                    ->setCellValue('L1', 'Total Telepon');
+
+        $column = 2;
+        $no     = 1;
+        foreach($summaries as $summary) {
+
+            $spreadsheet->setActiveSheetIndex(0)
+                        ->setCellValue('A' . $column, $no)
+                        ->setCellValue('B' . $column, $summary->fullname)
+                        ->setCellValue('C' . $column, $summary->company_name)
+                        ->setCellValue('D' . $column, $summary->address)
+                        ->setCellValue('E' . $column, $summary->data_source)
+                        ->setCellValue('F' . $column, $summary->employee)
+                        ->setCellValue('G' . $column, $summary->employee_family)
+                        ->setCellValue('H' . $column, $summary->stratifikasi)
+                        ->setCellValue('I' . $column, $summary->last_call)
+                        ->setCellValue('J' . $column, $summary->call_response_desc)
+                        ->setCellValue('K' . $column, $summary->result_desc)
+                        ->setCellValue('L' . $column, $summary->total);
+            $column++;
+            $no++;
+
         }
 
-        $data["users"] = $this->user_model->getUserRoleTelemarketing();
-        $data["companies"] = $this->company_model->getAll();
-        $this->load->view("admin_task/new_form", $data);
-    }
+        $writer = new Xlsx($spreadsheet);
 
-    public function edit($id = null)
-    {
-        if (!isset($id)) redirect('administrasi');
-       
-        $admin_task = $this->admin_task_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($admin_task->rules());
+        header('Content-Type: application/vnd.ms-excel');
+    header('Content-Disposition: attachment;filename="Rekapitulasi.xlsx"');
+    header('Cache-Control: max-age=0');
 
-        if ($validation->run()) {
-            $admin_task->update();
-            $this->session->set_flashdata('success', 'Berhasil diperbarui');
-            redirect(site_url('administrasi'));
-        }
-
-        $data["users"] = $this->user_model->getUserRoleTelemarketing();
-        $data["companies"] = $this->company_model->getAll();
-        $data["admin_task"] = $admin_task->getById($id);
-        if (!$data["admin_task"]) show_404();
-        
-        $this->load->view("admin_task/edit_form", $data);
-    }
-
-    public function delete($id=null)
-    {
-        if (!isset($id)) show_404();
-        
-        if ($this->admin_task_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus');
-            redirect(site_url('administrasi'));
-        }
+    $writer->save('php://output');
     }
 }
