@@ -43,7 +43,7 @@
         
         <?php if ($this->session->user_logged->role == "admin") { ?>
         <div class="sb-sidenav-menu-heading">Laporan</div>
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?php echo site_url('rekapitulasi'); ?>">
             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
             Rekapitulasi
         </a>

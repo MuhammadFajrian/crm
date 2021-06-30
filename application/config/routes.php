@@ -65,5 +65,7 @@ $route['admin/add'] = "useradmin/add/admin";
 $route['relation-officer'] = "useradmin/relation_officer";
 $route['relation-officer/add'] = "useradmin/add/telemarketing";
 
+$route['rekapitulasi'] = "summary";
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
