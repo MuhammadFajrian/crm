@@ -52,20 +52,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'dashboard';
 $route['welcome'] = 'welcome';
 
-$route['administrasi'] = "admintask";
-$route['administrasi/add'] = "admintask/add";
-$route['administrasi/edit/(:num)'] = "admintask/edit/$1";
-$route['administrasi/delete/(:num)'] = "admintask/delete/$1";
+$route['administrasi'] = "AdminTask";
+$route['administrasi/add'] = "AdminTask/add";
+$route['administrasi/edit/(:num)'] = "AdminTask/edit/$1";
+$route['administrasi/delete/(:num)'] = "AdminTask/delete/$1";
 
-$route['telemarketing'] = "rotask";
-$route['telemarketing/edit/(:num)'] = "rotask/edit/$1";
+$route['telemarketing'] = "RoTask";
+$route['telemarketing/edit/(:num)'] = "RoTask/edit/$1";
 
-$route['admin'] = "useradmin";
-$route['admin/add'] = "useradmin/add/admin";
-$route['relation-officer'] = "useradmin/relation_officer";
-$route['relation-officer/add'] = "useradmin/add/telemarketing";
+$route['admin'] = "UserAdmin";
+$route['admin/add'] = "UserAdmin/add/admin";
+$route['relation-officer'] = "UserAdmin/relation_officer";
+$route['relation-officer/add'] = "UserAdmin/add/telemarketing";
 
-$route['rekapitulasi'] = "summary";
+$route['rekapitulasi'] = "Summary";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
