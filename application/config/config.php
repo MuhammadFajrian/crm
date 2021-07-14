@@ -25,10 +25,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 // Development
-//$config['base_url'] = 'http://localhost/crm/';
+$config['base_url'] = 'http://localhost/crm/';
 
 // Production 
-$config['base_url'] = 'https://aditya0909.herokuapp.com/';
+//$config['base_url'] = 'https://aditya0909.herokuapp.com/';
 /*
 |--------------------------------------------------------------------------
 | Index File
