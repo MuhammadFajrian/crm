@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 // Development
-$config['base_url'] = 'http://localhost:8080/new-project/';
+// $config['base_url'] = 'http://localhost:8080/new-project/';
 
 // Production 
 $config['base_url'] = 'https://aditya0909.herokuapp.com/';
@@ -39,7 +39,7 @@ $config['base_url'] = 'https://aditya0909.herokuapp.com/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
