@@ -23,8 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
+// Development
 $config['base_url'] = 'http://localhost:8080/new-project/';
 
+// Production 
+$config['base_url'] = 'https://aditya0909.herokuapp.com/';
 /*
 |--------------------------------------------------------------------------
 | Index File
