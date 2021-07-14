@@ -23,13 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-<<<<<<< HEAD
-$config['base_url'] = 'http://localhost/crm/';
-=======
-
-// Development
-$config['base_url'] = 'http://localhost:8080/new-project/';
->>>>>>> 61014412fb02f84fb6fda4b4c6b8012f60e49595
+//$config['base_url'] = 'http://localhost/crm/';
 
 // Production 
 $config['base_url'] = 'https://aditya0909.herokuapp.com/';
