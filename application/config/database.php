@@ -100,10 +100,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'sql6.freemysqlhosting.net',
-	'username' => 'sql6425054',
-	'password' => '1wezNEWTuV',
-	'database' => 'sql6425054',
+	'hostname' => 'fajrian.com',
+	'username' => 'fajrianc_crm',
+	'password' => 'xq6f5b9Z6BLvDj8',
+	'database' => 'fajrianc_crm',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
